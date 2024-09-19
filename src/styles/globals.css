@@ -67,3 +67,6 @@
     @apply bg-background text-foreground;
   }
 }
+body {
+  font-family: "Noto Sans", system-ui;
+}
