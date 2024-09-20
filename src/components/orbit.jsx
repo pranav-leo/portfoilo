@@ -2,47 +2,47 @@ import OrbitingCircles from "@/components/magicui/orbiting-circles";
 
 export function Orbit() {
   return (
-    <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg  bg-black md:shadow-xl">
+    <div className="relative flex h-[28rem] -mt-20 w-full flex-col items-center justify-center overflow-hidden rounded-lg  bg-black md:shadow-xl">
       <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-black">
-        Circles
+       <img src="/pranav.png" alt="logo" className="w-80 h-80 mt-4" />
       </span>
 
       {/* Inner Circles */}
-      <OrbitingCircles
+      {/* <OrbitingCircles
         className="size-[30px] border-none bg-white"
         duration={20}
         delay={20}
         radius={80}
       >
         <Icons.whatsapp />
-      </OrbitingCircles>
-      <OrbitingCircles
+      </OrbitingCircles> */}
+      {/* <OrbitingCircles
         className="size-[30px] border-none bg-white"
         duration={20}
         delay={10}
         radius={80}
       >
         <Icons.notion />
-      </OrbitingCircles>
+      </OrbitingCircles> */}
 
       {/* Outer Circles (reverse) */}
-      <OrbitingCircles
+      {/* <OrbitingCircles
         className="size-[50px] border-none bg-transparent"
-        radius={190}
-        duration={20}
+        radius={210}
+        duration={10}
         reverse
       >
         <Icons.googleDrive />
       </OrbitingCircles>
       <OrbitingCircles
         className="size-[50px] border-none bg-transparent"
-        radius={190}
-        duration={20}
-        delay={20}
+        radius={210}
+        duration={10}
+        delay={5}
         reverse
       >
         <Icons.gitHub />
-      </OrbitingCircles>
+      </OrbitingCircles> */}
     </div>
   );
 }

@@ -6,14 +6,13 @@
   "tailwind": {
     "config": "tailwind.config.js",
     "css": "src/styles/globals.css",
-    "baseColor": "slate",
+    "baseColor": "neutral",
     "cssVariables": true,
     "prefix": ""
   },
   "aliases": {
     "components": "@/components",
     "utils": "@/lib/utils",
-    "ui": "@/components/ui",
-    "magicui": "@/components/magicui"
+    "ui": "@/components/ui"
   }
 }
