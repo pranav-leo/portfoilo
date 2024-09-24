@@ -5,11 +5,13 @@ import { interpolateColor } from "@/lib/math_utils";
 import { Orbit } from "@/components/orbit";
 import { GoogleGemini } from "@/components/gemini";
 import { ExpMarquee } from "@/components/experince";
-import { Skills } from "@/components/sills";
+import SkillsGlobe from "@/components/iconGlobe";
+import Skills from "@/components/skills";
 export default function Home() {
   const mainRef = useRef(null);
   const navRef = useRef(null);
   const aboutRef = useRef(null);
+
   const scrollHeight = 1;
   const handleScroll = useCallback(() => {
     const scrollTop = window.scrollY;
@@ -18,7 +20,7 @@ export default function Home() {
     const scrollFractionUnClamped = scrollTop / maxScroll;
     if (mainRef.current && navRef.current) {
       if (scrollFraction >= 0.6) {
-        const colorFraction = (scrollFraction - 0.6) / 0.2; // Normalize fraction between 0.8 and 1
+        const colorFraction = (scrollFraction - 0.6) / 0.2;
         const newColor = interpolateColor(colorFraction);
 
         // Change the background color to black progressively
@@ -47,6 +49,7 @@ export default function Home() {
         // aboutRef.current.style.opacity=`${0}`;
       }
     }
+    
   }, [scrollHeight]);
 
   useEffect(() => {
@@ -98,8 +101,8 @@ export default function Home() {
       <div className="h-[50vh]"></div>
       <div id="about" ref={aboutRef} className="flex ">
         <div className="flex text-white flex-col flex-[0.5] px-8 gap-4 ">
-          <h2 className="text-4xl font-semibold">About</h2>
-          <p className="text-xl font-medium">
+          <h2 className="text-4xl font-medium">About</h2>
+          <p className="text-xl font-normal">
             Hi, I am Pranav Arya, a software developer based in India. I am a
             self-taught developer with a passion for creating beautiful and
             functional websites. I have experience working with a variety of
@@ -114,11 +117,13 @@ export default function Home() {
       </div>
 
       <div className="h-[30vh]"></div>
+      {/* <Skills  containerRef={containerRef} /> */}
+       
+
       <Skills />
-      <h3 className="text-7xl font-semibold text-white text-left bg-blue-400 w-full px-12 ">Worked with 10+ companies</h3>
-      
-      <ExpMarquee />
-      
+          
+      <SkillsGlobe />
+
       <div className="h-screen"></div>
       <GoogleGemini />
     </main>

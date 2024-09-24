@@ -82,7 +82,7 @@ export default function RetroGrid({ className, angle = 65 }) {
             // Initial Light Styles (before scroll 80%)
             "[background-image:linear-gradient(to_right,rgba(0,0,0,0.3)_1px,transparent_0),linear-gradient(to_bottom,rgba(0,0,0,0.3)_1px,transparent_0)]",
             // Dark styles for after 80% scroll
-            "dark:[background-image:linear-gradient(to_right,rgba(25,255,25,0.8)_2px,transparent_0),linear-gradient(to_bottom,rgba(25,255,25,0.8)_2px,transparent_0)]"
+            "dark:[background-image:linear-gradient(to_right,rgba(25,255,25,0.5)_2px,transparent_0),linear-gradient(to_bottom,rgba(25,255,25,0.5)_2px,transparent_0)]"
           )}
         />
       </div>

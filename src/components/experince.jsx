@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import Marquee from "@/components/magicui/marquee";
-import { Skills } from "./sills";
+import { Skills } from "./skills";
 
 const reviews = [
   {

@@ -69,7 +69,7 @@ export default function IconCloud({
 
   return (
     // @ts-ignore
-    (<Cloud {...cloudProps}>
+    (<Cloud  {...cloudProps}>
       <>{renderedIcons}</>
     </Cloud>)
   );
