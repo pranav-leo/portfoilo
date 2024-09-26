@@ -9,7 +9,7 @@ const GreetingLottie = ({ animationPath }) => {
 	};
 
 	return (
-		<div className="max-w-[40vw]"  onClick={() => null}>
+		<div className="max-w-[40vw] flex items-start"  onClick={() => null}>
 			<Lottie options={defaultOptions} />
 		</div>
 	);

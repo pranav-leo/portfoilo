@@ -1,10 +1,11 @@
 import { useRef, useEffect, useCallback } from "react";
 import TypingAnimation from "@/components/typing";
 import RetroGrid from "@/components/magicui/retro-grid";
-import { interpolateColor } from "@/lib/math_utils";
+import { interpolateColor,interpolateGreyColor } from "@/lib/math_utils";
 import { Orbit } from "@/components/orbit";
 import { GoogleGemini } from "@/components/gemini";
 import { ExpMarquee } from "@/components/experince";
+import Achivments from "@/components/achivments";
 import SkillsGlobe from "@/components/iconGlobe";
 import Skills from "@/components/skills";
 export default function Home() {
@@ -19,7 +20,7 @@ export default function Home() {
     const scrollFraction = Math.min(scrollTop / maxScroll, 1);
     const scrollFractionUnClamped = scrollTop / maxScroll;
     if (mainRef.current && navRef.current) {
-      if (scrollFraction >= 0.6) {
+      if (scrollFractionUnClamped >= 0.6 && scrollFractionUnClamped <= 8.5) {
         const colorFraction = (scrollFraction - 0.6) / 0.2;
         const newColor = interpolateColor(colorFraction);
 
@@ -27,7 +28,15 @@ export default function Home() {
         mainRef.current.style.backgroundColor = newColor;
         navRef.current.style.backgroundColor = newColor;
         navRef.current.style.color = "#ffffff";
-      } else {
+      } 
+      else if (scrollFractionUnClamped > 8.5) {
+        const newColor = interpolateGreyColor(scrollFractionUnClamped-8.5);
+        mainRef.current.style.backgroundColor = newColor;
+        navRef.current.style.backgroundColor = newColor;
+        // navRef.current.style.color = "#ffffff";
+
+      }
+      else if(scrollFractionUnClamped < 0.6){ 
         // Restore gradient and reset background color
         mainRef.current.style.backgroundColor = "";
         navRef.current.style.backgroundColor = "";
@@ -123,6 +132,7 @@ export default function Home() {
       <Skills />
           
       <SkillsGlobe />
+      <Achivments />
 
       <div className="h-screen"></div>
       <GoogleGemini />
