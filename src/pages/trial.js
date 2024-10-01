@@ -1,63 +1,143 @@
-import { useEffect } from "react";
+import React, { useRef, useEffect, useCallback,useState } from "react";
+import IconCloud from "@/components/magicui/icon-cloud";
 
-export default function Skills() {
+const icons = [
+  "react",
+  "bun",
+  "django",
+  "strapi",
+  "mongodb",
+  "postgresql",
+  "supabase",
+  "googlecloud",
+  "awsec2",
+  "awsrds",
+  "redis",
+  "docker",
+  "azure",
+  "nodejs",
+  "typescript",
+  "vite",
+  "javascript",
+  "react",
+  "html5",
+];
+
+
+export default function TriangleParticles() {
+  const ballARef = useRef(null);
+  const ballBRef = useRef(null);
+  const ballCRef = useRef(null);
+  const containerRef = useRef(null);
+  const x = 20; // Variable representing the percentage of viewport width (15% in this example)
+  const [sideLength, setSideLength] = useState(0) ; // Side length of the equilateral triangle
+
+
   useEffect(() => {
-    const stickySections = [...document.querySelectorAll(".sticky_wrap")];
 
-    const handleScroll = () => {
-      stickySections.forEach((section) => {
-        const offsetTop = section.parentElement.offsetTop;
-        const scrollSection = section.querySelector(".horizontal_scroll");
-        let percentage =
-          ((window.scrollY - offsetTop) / window.innerHeight) * 100;
-        percentage = percentage < 0 ? 0 : percentage > 300 ? 300 : percentage;
-        scrollSection.style.transform = `translate3d(${-percentage}vw, 0, 0)`;
-      });
+    const multiplier = 30*window.innerWidth/(window.innerWidth>1000? 1800: 1500);
+    console.log("mult",multiplier)
+    setSideLength(x*multiplier);
+    console.log("sideLength",sideLength)
+    return () => {
+      // cleanup
+      setSideLength(x*multiplier);
     };
+  }, [x])
+  
 
+  // Function to calculate spiral movement for each ball
+  
+
+
+  // Scroll handler to track scroll progress and update positions
+  const handleScroll = useCallback(() => {
+    const getSpiralPosition = (initial, center, progress, angleOffset) => {
+      console.log("sideLength",sideLength)
+      const distanceFromCenter = (1 - progress) * (sideLength / 2); // Distance decreases as progress increases
+      const angle = progress * Math.PI * 2 + angleOffset; // Rotate based on progress
+  
+      return {
+        x: center.x + distanceFromCenter * Math.cos(angle),
+        y: center.y + distanceFromCenter * Math.sin(angle),
+      };
+    };
+    // setSideLength(window.innerWidth * (1-(x / 500)));
+ 
+    if (containerRef.current) {
+      const { top, height } = containerRef.current.getBoundingClientRect();
+      const scrollTop = -top; // Negative value as we scroll down
+      const maxScroll = height - window.innerHeight; // Scrollable height
+      const scrollFraction = Math.min(scrollTop / maxScroll, 1); // Clamp scrollFraction between 0 and 1
+ 
+      // Use x% of the viewport width for the initial X position of the balls
+      const vwX = -1* (window.innerWidth * (((x+35) / 100)))/(3) 
+
+
+      // Initial positions for A, B, and C (vertices of the equilateral triangle), using x%vw
+      const initialPositions = {
+        A: { x: vwX, y: 30 }, // A starts at (x%vw, 100)
+        B: { x: vwX + sideLength, y: 30 }, // B starts to the right of A
+        C: {
+          x: vwX + sideLength / 2,
+          y: 100 + (Math.sqrt(3) * sideLength) / 2, // C at the bottom of the triangle
+        },
+      };
+
+      // The center of the triangle where the balls will collide
+      const centerPosition = {
+        x: initialPositions.A.x + sideLength / 2,
+        y: initialPositions.A.y + (Math.sqrt(3) * sideLength) / 6, // Equilateral triangle center
+      };
+
+      // Calculate the current positions of A, B, and C based on scroll progress and rotation angle
+      const positionA = getSpiralPosition(initialPositions.A, centerPosition, scrollFraction, 0);
+      const positionB = getSpiralPosition(initialPositions.B, centerPosition, scrollFraction, (2 * Math.PI) / 3);
+      const positionC = getSpiralPosition(initialPositions.C, centerPosition, scrollFraction, (4 * Math.PI) / 3);
+
+      // Apply the new positions to the DOM elements
+      if (ballARef.current && ballBRef.current && ballCRef.current) {
+        ballARef.current.style.transform = `translate(${positionA.x}px, ${positionA.y}px)`;
+        ballBRef.current.style.transform = `translate(${positionB.x}px, ${positionB.y}px)`;
+        ballCRef.current.style.transform = `translate(${positionC.x}px, ${positionC.y}px)`;
+      }
+    }
+  }, [x,sideLength]);
+
+  useEffect(() => {
+    // setSideLength(window.innerWidth * (x / 500));
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [handleScroll,sideLength]);
 
   return (
-    <main className="w-full" >
-      {/* First Section */}
-      <section className="h-screen flex items-center justify-center">
-        
-      </section>
-
-      {/* Horizontal Scroll Section */}
-      <div className="scroll_container h-[400vh] relative">
-        <div className="sticky_wrap sticky top-0 h-screen overflow-hidden">
-          {/* Hello Text as Sticky */}
-          {/* <div className="absolute top-20 left-20 z-10">
-            <h2 className="text-4xl text-white">Hello</h2>
-          </div> */}
-
-          {/* Horizontal Scroll Content */}
-          <div className="horizontal_scroll flex justify-between absolute top-0 w-[400vw] h-full">
-            <div className="scroll_contents h-[50vh] red bg-red-600 w-screen">
-              <div className=" z-10">
-                <h2 className="text-4xl text-white">Hello</h2>
-              </div>
-            </div>
-            <div className="scroll_contents h-[50vh] yellow bg-yellow-500 w-screen">
-              <div className=" z-10">
-                <h2 className="text-4xl text-white">Hello</h2>
-              </div>
-            </div>
-            <div className="scroll_contents h-[50vh] green bg-green-500 w-screen"></div>
-            <div className="scroll_contents blue flex items-end justify-end bg-blue-500 w-screen">
-              <h2 className="right text-4xl text-white mr-20 mb-20">Goodbye</h2>
-            </div>
-          </div>
+    <div ref={containerRef} className="relative w-screen h-[300vh] bg-gray-900 overflow-x-clip ">
+      <div className="sticky top-[8vh] bg-blue-400 h-[0vh] w-screen flex items-center justify-center overflow-x-clip">
+        <div
+          ref={ballARef}
+          className="absolute"
+          style={{ width: `${x}vw`, height: `${x}vw`, zIndex: 50 }}
+        >
+          <IconCloud iconSlugs={icons} />
+        </div>
+        <div
+          ref={ballBRef}
+          className="absolute"
+          style={{ width: `${x}vw`, height: `${x}vw`, zIndex: 50 }}
+        >
+          <IconCloud iconSlugs={icons} />
+        </div>
+        <div
+          ref={ballCRef}
+          className="absolute"
+          style={{ width: `${x}vw`, height: `${x}vw`, zIndex: 50 }}
+        >
+          <IconCloud iconSlugs={icons} />
         </div>
       </div>
-
-      {/* Final Section */}
-      <section className="h-screen flex items-center justify-center">
-       
-      </section>
-    </main>
+    </div>
   );
 }

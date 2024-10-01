@@ -1,13 +1,16 @@
 import { useRef, useEffect, useCallback } from "react";
 import TypingAnimation from "@/components/typing";
 import RetroGrid from "@/components/magicui/retro-grid";
-import { interpolateColor,interpolateGreyColor } from "@/lib/math_utils";
-import { Orbit } from "@/components/orbit";
+import { interpolateColor, interpolateGreyColor } from "@/lib/math_utils";
+// import { Orbit } from "@/components/orbit";
 import { GoogleGemini } from "@/components/gemini";
-import { ExpMarquee } from "@/components/experince";
+// import { ExpMarquee } from "@/components/experince";
 import Achivments from "@/components/achivments";
 import SkillsGlobe from "@/components/iconGlobe";
 import Skills from "@/components/skills";
+import Projects from "@/components/projects";
+import Voulnteer from "@/components/voulnteer";
+
 export default function Home() {
   const mainRef = useRef(null);
   const navRef = useRef(null);
@@ -28,15 +31,12 @@ export default function Home() {
         mainRef.current.style.backgroundColor = newColor;
         navRef.current.style.backgroundColor = newColor;
         navRef.current.style.color = "#ffffff";
-      } 
-      else if (scrollFractionUnClamped > 8.5) {
-        const newColor = interpolateGreyColor(scrollFractionUnClamped-8.5);
+      } else if (scrollFractionUnClamped > 9.5) {
+        const newColor = interpolateGreyColor(scrollFractionUnClamped - 9.5);
         mainRef.current.style.backgroundColor = newColor;
         navRef.current.style.backgroundColor = newColor;
         // navRef.current.style.color = "#ffffff";
-
-      }
-      else if(scrollFractionUnClamped < 0.6){ 
+      } else if (scrollFractionUnClamped < 0.6) {
         // Restore gradient and reset background color
         mainRef.current.style.backgroundColor = "";
         navRef.current.style.backgroundColor = "";
@@ -58,7 +58,6 @@ export default function Home() {
         // aboutRef.current.style.opacity=`${0}`;
       }
     }
-    
   }, [scrollHeight]);
 
   useEffect(() => {
@@ -70,13 +69,21 @@ export default function Home() {
 
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-between  `}
+      className={`flex min-h-screen flex-col items-center justify-between  overflow-y-clip `}
+      style={{
+        scrollbarWidth: "none", // Firefox
+        msOverflowStyle: "none", // IE and Edge
+        "&::-webkit-scrollbar": {
+          display: "none", // Chrome and Safari
+        },
+        WebkitOverflowScrolling: "touch",
+      }}
       ref={mainRef}
     >
       {/* Navbar */}
       <div
         ref={navRef}
-        className="fixed bg-white w-screen h-12 z-[12] px- flex justify-around items-end  "
+        className="fixed bg-white w-screen h-16 z-[12]  flex justify-around items-center  "
       >
         <div> Contact Me </div>
         <div className="flex gap-[5vw] text-lg font-medium">
@@ -127,13 +134,14 @@ export default function Home() {
 
       <div className="h-[30vh]"></div>
       {/* <Skills  containerRef={containerRef} /> */}
-       
 
       <Skills />
-          
+
       <SkillsGlobe />
       <Achivments />
-
+   
+      <Projects />
+      <Voulnteer />
       <div className="h-screen"></div>
       <GoogleGemini />
     </main>
