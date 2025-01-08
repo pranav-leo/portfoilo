@@ -10,6 +10,9 @@ export default function Document() {
           href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
           rel="stylesheet"
         />
+        <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/TweenLite.min.js"></script>
+        <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/EasePack.min.js"></script>
+        <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/499416/demo.js"></script>
       </Head>
       <body style={{
         scrollbarWidth: "none", // Firefox

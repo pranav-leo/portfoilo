@@ -31,7 +31,7 @@ export const GoogleGeminiEffect = ({
         <button
           onClick={
             ()=>{
-              router.push("https://youtu.be/HqAsv-O_YWM?si=tzwAAFVH-BDk84R7&t=55")
+              router.push("https://youtu.be/oY0GmnYsak8?si=-B4WAA0nuWtRGHbe&t=5")
             }
           }
           className="font-bold bg-white rounded-full md:px-4 md:py-2 px-2 py-1 md:mt-[8.5rem] mt-8 z-30 md:text-base text-black text-xs  w-fit mx-auto ">

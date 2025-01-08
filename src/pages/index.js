@@ -1,16 +1,20 @@
+// load 
+
 import { useRef, useEffect, useCallback } from "react";
+
 import TypingAnimation from "@/components/typing";
 import RetroGrid from "@/components/magicui/retro-grid";
 import { interpolateColor, interpolateGreyColor } from "@/lib/math_utils";
 // import { Orbit } from "@/components/orbit";
-import { GoogleGemini } from "@/components/gemini";
 // import { ExpMarquee } from "@/components/experince";
 import Achivments from "@/components/achivments";
 import SkillsGlobe from "@/components/iconGlobe";
 import Skills from "@/components/skills";
 import Projects from "@/components/projects";
 import Voulnteer from "@/components/voulnteer";
-
+import GithubProfileCard from "@/components/githubCard";
+import AnimatedHeader from "@/components/AnimatedHeader";
+import StarBackground from "@/components/star-background";
 export default function Home() {
   const mainRef = useRef(null);
   const navRef = useRef(null);
@@ -85,7 +89,7 @@ export default function Home() {
         ref={navRef}
         className="fixed bg-white w-screen h-16 z-[12]  flex justify-around items-center  "
       >
-        <div> Contact Me </div>
+        <div> Pranav Arya </div>
         <div className="flex gap-[5vw] text-lg font-medium">
           {" "}
           <p>About</p>
@@ -115,22 +119,30 @@ export default function Home() {
         <RetroGrid />
       </div>
       <div className="h-[50vh]"></div>
-      <div id="about" ref={aboutRef} className="flex ">
-        <div className="flex text-white flex-col flex-[0.5] px-8 gap-4 ">
+     
+      <div id="about" ref={aboutRef} className="flex w-full px-[5vw] ">
+        {/* <div className="flex w-full text-white flex-col gap-4 ">
           <h2 className="text-4xl font-medium">About</h2>
-          <p className="text-xl font-normal">
-            Hi, I am Pranav Arya, a software developer based in India. I am a
-            self-taught developer with a passion for creating beautiful and
-            functional websites. I have experience working with a variety of
-            technologies, including HTML, CSS, JavaScript, React, and Node.js. I
-            am always looking to learn new things and improve my skills, and I
-            am excited to see where my coding journey takes me next.
-          </p>
-        </div>
-        {/* <div className="flex flex-[0.5]">
-          <Orbit />
+          <div className="flex w-full bg-red-400 items-center justify-between">
+           
+            
+            <p className="text-xl max-w-[50vw]  font-normal">
+              Hi, I am Pranav Arya, a software developer based in India. I am a
+              self-taught developer with a passion for creating beautiful and
+              functional websites. I have experience working with a variety ofpx-[5vw]
+              technologies, including HTML, CSS, JavaScript, React, and Node.js.
+              I am always looking to learn new things and improve my skills, and
+              I am excited to see where my coding journey takes me next.
+            </p>
+            <div className=" min-w-64 flex items-center justify-end whitespace-pre-wrap ">
+              <img src="/pranav.png" alt="logo" className="w-80 h-80 -mt-12" />
+            </div>
+          </div>
         </div> */}
       </div>
+      <StarBackground/>
+
+      <AnimatedHeader />
 
       <div className="h-[30vh]"></div>
       {/* <Skills  containerRef={containerRef} /> */}
@@ -139,11 +151,15 @@ export default function Home() {
 
       <SkillsGlobe />
       <Achivments />
-   
+
       <Projects />
       <Voulnteer />
       <div className="h-screen"></div>
-      <GoogleGemini />
+
+      {/* footer */}
+      <div className="w-screen flex px-12 justify-start">
+        <GithubProfileCard />
+      </div>
     </main>
   );
 }

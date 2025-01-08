@@ -35,13 +35,13 @@ export default function TriangleParticles() {
 
   useEffect(() => {
 
-    const multiplier = 30*window.innerWidth/(window.innerWidth>1000? 1800: 1500);
+    const multiplier = window.innerWidth*(1-(3*x/100));
     console.log("mult",multiplier)
-    setSideLength(x*multiplier);
+    setSideLength(multiplier);
     console.log("sideLength",sideLength)
     return () => {
       // cleanup
-      setSideLength(x*multiplier);
+      setSideLength(multiplier);
     };
   }, [x])
   
@@ -71,13 +71,13 @@ export default function TriangleParticles() {
       const scrollFraction = Math.min(scrollTop / maxScroll, 1); // Clamp scrollFraction between 0 and 1
  
       // Use x% of the viewport width for the initial X position of the balls
-      const vwX = -1* (window.innerWidth * (((x+35) / 100)))/(3) 
-
+      const vwX = -4* (window.innerWidth * (((x) / 100)))/(3) 
+      const vwY = 1.05*window.innerWidth * (1-(4.5*x / 100));
 
       // Initial positions for A, B, and C (vertices of the equilateral triangle), using x%vw
       const initialPositions = {
-        A: { x: vwX, y: 30 }, // A starts at (x%vw, 100)
-        B: { x: vwX + sideLength, y: 30 }, // B starts to the right of A
+        A: { x: vwX, y: vwY }, // A starts at (x%vw, 100)
+        B: { x: vwX + sideLength, y: vwY *1.5 }, // B starts to the right of A
         C: {
           x: vwX + sideLength / 2,
           y: 100 + (Math.sqrt(3) * sideLength) / 2, // C at the bottom of the triangle
@@ -115,7 +115,7 @@ export default function TriangleParticles() {
 
   return (
     <div ref={containerRef} className="relative w-screen h-[300vh] bg-gray-900 overflow-x-clip ">
-      <div className="sticky top-[8vh] bg-blue-400 h-[0vh] w-screen flex items-center justify-center overflow-x-clip">
+      <div className="sticky top-[1px] bg-blue-400 h-[0vh] w-screen flex items-center justify-center overflow-x-clip">
         <div
           ref={ballARef}
           className="absolute"

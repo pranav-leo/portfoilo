@@ -74,7 +74,7 @@ const Voulnteer = () => {
       href: "/",
       cta: "Learn more",
       background: <img className="absolute -right-20 -top-20 opacity-60" />,
-      className: "lg:col-start-3 lg:col-end-5 lg:row-start-3 lg:row-end-5", // spans 2 rows
+      className: "lg:col-start-3 lg:col-end-4 lg:row-start-3 lg:row-end-5", // spans 2 rows
     },
     {
       Icon: HeartIcon,
