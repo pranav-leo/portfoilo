@@ -19,7 +19,7 @@ const BentoGrid = ({
 const BentoCard = ({
   name,
   className,
-  background,
+  background="/cell.png",
   Icon=<></>,
   description,
   href,
@@ -38,9 +38,9 @@ const BentoCard = ({
    
     {/* <div>{background}</div> */}
     <div
-      className=" bg-red-400 z-10 flex transform-gpu flex-col gap-1 transition-all duration-300 h-full min-h-[9vw] group-hover:-translate-y-10">
+      className=" bg-black/60 z-10 flex transform-gpu flex-col gap-1 transition-all duration-300 h-full min-h-[9vw] group-hover:-translate-y-10">
       
-      <Image src="/cell.png" layout="fill"  objectFit="cover" />
+      <Image src={`${background}`} layout="fill"  objectFit="scale-down" />
     </div>
 
  

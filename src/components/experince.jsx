@@ -1,32 +1,16 @@
+"use client";
+import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import Marquee from "@/components/magicui/marquee";
-import { Skills } from "./skills";
 
-const reviews = [
-  {
-    name: "Eight Club",
-   
-    img: "/eightclub.jpeg",
-  },
-  {
-    name: "Eight Club",
-   
-    img: "/eightclub.jpeg",
-  },  {
-    name: "Eight Club",
-   
-    img: "/eightclub.jpeg",
-  },  {
-    name: "Eight Club",
-   
-    img: "/eightclub.jpeg",
-  },
+
+// const reviews = [
+
  
  
-];
+// ];
 
-const firstRow = reviews.slice(0, reviews.length / 2);
-const secondRow = reviews.slice(reviews.length / 2);
+
 
 const ReviewCard = ({
   img,
@@ -34,6 +18,10 @@ const ReviewCard = ({
   username,
   body,
 }) => {
+  
+
+
+
   return (
     <figure
       className={cn(
@@ -45,7 +33,7 @@ const ReviewCard = ({
       )}
     >
       
-        <img className="w-36"  alt={name} src={img} />
+        <img className="w-44 h-36"  alt={name} src={img} />
         
      
     </figure>
@@ -53,16 +41,44 @@ const ReviewCard = ({
 };
 
 export function ExpMarquee() {
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/hello")
+      .then(res => res.json())
+      .then(data => setReviews(data.images.map((img) => ({
+        img: `/compnies/${img}`,
+        
+      })))
+      )
+      .catch(console.error);
+  }, []);
+
+  let firstRow = reviews.slice(0, reviews.length / 2);
+  let secondRow = reviews.slice(reviews.length / 2);
+  // swap 3 random reviews in first row with 3 random reviews in second row
+  for (let i = 0; i < 3; i++) {
+    const randomIndex = Math.floor(Math.random() * firstRow.length);
+    const temp = firstRow[randomIndex];
+    firstRow[randomIndex] = secondRow[randomIndex];
+    secondRow[randomIndex] = temp
+  }
+  
+
+
   return (
     <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg   ">
-      <Marquee pauseOnHover className="[--duration:5s]">
+
+        <h2 className="text-2xl md:text-4xl text-white font-bold leading-tight mb-4" > Empowering Brands, Elevating Visions </h2>
+
+      <Marquee pauseOnHover className="[--duration:10s]">
         {firstRow.map((review) => (
-          <ReviewCard key={review.username} {...review} />
+          <ReviewCard  {...review} />
         ))}
       </Marquee>
-      <Marquee reverse pauseOnHover className="[--duration:5s]">
+      <Marquee reverse pauseOnHover className="[--duration:11s]">
         {secondRow.map((review) => (
-          <ReviewCard key={review.username} {...review} />
+          <ReviewCard  {...review} />
         ))}
       </Marquee>
       {/* <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-white dark:from-background"></div>

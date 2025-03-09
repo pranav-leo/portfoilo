@@ -19,7 +19,7 @@ const Voulnteer = () => {
       description: "We automatically save your files as you type.",
       href: "/",
       cta: "Learn more",
-      background: <img className="absolute -right-20 -top-20 opacity-60" />,
+      background: "/cell.png",
       className: "lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:row-end-3", // spans 2 rows
     },
     {
@@ -28,7 +28,7 @@ const Voulnteer = () => {
       description: "Search through all your files in one place.",
       href: "/",
       cta: "Learn more",
-      background: <img className="absolute -right-20 -top-20 opacity-60" />,
+      background: "/smp.svg",
       className: "lg:col-start-2 lg:col-end-3 lg:row-start-1 lg:row-end-2",
     },
     {
@@ -37,7 +37,7 @@ const Voulnteer = () => {
       description: "Supports 100+ languages and counting.",
       href: "/",
       cta: "Learn more",
-      background: <img className="absolute -right-20 -top-20 opacity-60" />,
+      background: "/girlscriptsoc_logo.jpeg",
       className: "lg:col-start-3 lg:col-end-4 lg:row-start-1 lg:row-end-2", // regular size
     },
     {
@@ -46,7 +46,7 @@ const Voulnteer = () => {
       description: "Use the calendar to filter your files by date.",
       href: "/",
       cta: "Learn more",
-      background: <img className="absolute -right-20 -top-20 opacity-60" />,
+      background: "/sc.png",
       className: "lg:col-start-2 lg:col-end-4 lg:row-start-2 lg:row-end-3", // spans 2 columns
     },
     {
@@ -55,7 +55,7 @@ const Voulnteer = () => {
       description: "Get notified when someone shares a file or mentions you.",
       href: "/",
       cta: "Learn more",
-      background: <img className="absolute -right-20 -top-20 opacity-60" />,
+      background: "/aries_iitr_logo.jpeg",
       className: "lg:col-start-1 lg:col-end-2 lg:row-start-3 lg:row-end-4", // regular size
     },
     {
@@ -64,7 +64,7 @@ const Voulnteer = () => {
       description: "Configure your preferences and account details.",
       href: "/",
       cta: "Learn more",
-      background: <img className="absolute -right-20 -top-20 opacity-60" />,
+      background: "/interiit.png",
       className: "lg:col-start-2 lg:col-end-3 lg:row-start-3 lg:row-end-4", // regular size
     },
     {
@@ -73,7 +73,7 @@ const Voulnteer = () => {
       description: "Mark files as favorites for easy access.",
       href: "/",
       cta: "Learn more",
-      background: <img className="absolute -right-20 -top-20 opacity-60" />,
+      background: "/esummit.svg",
       className: "lg:col-start-3 lg:col-end-4 lg:row-start-3 lg:row-end-5", // spans 2 rows
     },
     {
@@ -82,7 +82,7 @@ const Voulnteer = () => {
       description: "Keep track of the files you love the most.",
       href: "/",
       cta: "Learn more",
-      background: <img className="absolute -right-20 -top-20 opacity-60" />,
+      background: "/cultrul_council.png",
       className: "lg:col-start-1 lg:col-end-3 lg:row-start-4 lg:row-end-5", // regular size
     },
   ];

@@ -6,7 +6,7 @@ import TypingAnimation from "@/components/typing";
 import RetroGrid from "@/components/magicui/retro-grid";
 import { interpolateColor, interpolateGreyColor } from "@/lib/math_utils";
 // import { Orbit } from "@/components/orbit";
-// import { ExpMarquee } from "@/components/experince";
+import { ExpMarquee } from "@/components/experince";
 import Achivments from "@/components/achivments";
 import SkillsGlobe from "@/components/iconGlobe";
 import Skills from "@/components/skills";
@@ -15,6 +15,7 @@ import Voulnteer from "@/components/voulnteer";
 import GithubProfileCard from "@/components/githubCard";
 import AnimatedHeader from "@/components/AnimatedHeader";
 import StarBackground from "@/components/star-background";
+import { AnimatedSpan, Terminal,TypingAnimationTerminal } from "@/components/magicui/terminal"
 export default function Home() {
   const mainRef = useRef(null);
   const navRef = useRef(null);
@@ -121,15 +122,15 @@ export default function Home() {
       <div className="h-[50vh]"></div>
      
       <div id="about" ref={aboutRef} className="flex w-full px-[5vw] ">
-        {/* <div className="flex w-full text-white flex-col gap-4 ">
+        <div className="flex w-full text-white flex-col gap-4 ">
           <h2 className="text-4xl font-medium">About</h2>
-          <div className="flex w-full bg-red-400 items-center justify-between">
+          <div className="flex w-full items-center justify-between">
            
             
             <p className="text-xl max-w-[50vw]  font-normal">
               Hi, I am Pranav Arya, a software developer based in India. I am a
               self-taught developer with a passion for creating beautiful and
-              functional websites. I have experience working with a variety ofpx-[5vw]
+              functional websites. I have experience working with a variety of
               technologies, including HTML, CSS, JavaScript, React, and Node.js.
               I am always looking to learn new things and improve my skills, and
               I am excited to see where my coding journey takes me next.
@@ -138,14 +139,73 @@ export default function Home() {
               <img src="/pranav.png" alt="logo" className="w-80 h-80 -mt-12" />
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
-      <StarBackground/>
-
+      {/* <StarBackground/>/ */}
       <AnimatedHeader />
+
+      {/* <Terminal className="w-[90vw] h-[500px] ">
+
+   
+      <TypingAnimationTerminal  >&gt; bun intilize exprince </TypingAnimationTerminal>
+
+      <AnimatedSpan delay={1500} className="text-green-500">
+        <span>✔ Preflight checks.</span>
+      </AnimatedSpan>
+
+      <AnimatedSpan delay={2000} className="text-green-500">
+        <span>✔ Verifying framework. Found Next.js.</span>
+      </AnimatedSpan>
+
+      <AnimatedSpan delay={2500} className="text-green-500">
+        <span>✔ Validating Tailwind CSS.</span>
+      </AnimatedSpan>
+
+      <AnimatedSpan delay={3000} className="text-green-500">
+        <span>✔ Validating import alias.</span>
+      </AnimatedSpan>
+
+      <AnimatedSpan delay={3500} className="text-green-500">
+        <span>✔ Writing components.json.</span>
+      </AnimatedSpan>
+
+      <AnimatedSpan delay={4000} className="text-green-500">
+        <span>✔ Checking registry.</span>
+      </AnimatedSpan>
+
+      <AnimatedSpan delay={4500} className="text-green-500">
+        <span>✔ Updating tailwind.config.ts</span>
+      </AnimatedSpan>
+
+      <AnimatedSpan delay={5000} className="text-green-500">
+        <span>✔ Updating app/globals.css</span>
+      </AnimatedSpan>
+
+      <AnimatedSpan delay={5500} className="text-green-500">
+        <span>✔ Installing dependencies.</span>
+      </AnimatedSpan>
+
+      <AnimatedSpan delay={6000} className="text-blue-500">
+        <span>ℹ Updated 1 file:</span>
+        <span className="pl-2">- lib/utils.ts</span>
+      </AnimatedSpan>
+
+      <TypingAnimationTerminal delay={6500} className="text-muted-foreground">
+        Success! Project initialization completed.
+      </TypingAnimationTerminal>
+
+      <TypingAnimationTerminal delay={7000} className="text-muted-foreground">
+        You may now add components.
+      </TypingAnimationTerminal>
+  
+
+      </Terminal> */}
+      <ExpMarquee />
 
       <div className="h-[30vh]"></div>
       {/* <Skills  containerRef={containerRef} /> */}
+
+     
 
       <Skills />
 

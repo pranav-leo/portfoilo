@@ -23,6 +23,39 @@ const icons = [
   "html5",
 ];
 
+const slugs = [
+  "typescript",
+  "javascript",
+  "dart",
+  "java",
+  "react",
+  "flutter",
+  "android",
+  "html5",
+  "css3",
+  "nodedotjs",
+  "express",
+  "nextdotjs",
+  "prisma",
+  "amazonaws",
+  "postgresql",
+  "firebase",
+  "nginx",
+  "vercel",
+  "testinglibrary",
+  "jest",
+  "cypress",
+  "docker",
+  "git",
+  "jira",
+  "github",
+  "gitlab",
+  "visualstudiocode",
+  "androidstudio",
+  "sonarqube",
+  "figma",
+];
+
 
 export default function TriangleParticles() {
   const ballARef = useRef(null);
@@ -112,6 +145,11 @@ export default function TriangleParticles() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, [handleScroll,sideLength]);
+  
+
+  const images = slugs.map(
+    (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`,
+  );
 
   return (
     <div ref={containerRef} className="relative w-screen h-[300vh] bg-gray-900 overflow-x-clip ">
@@ -121,21 +159,21 @@ export default function TriangleParticles() {
           className="absolute"
           style={{ width: `${x}vw`, height: `${x}vw`, zIndex: 50 }}
         >
-          <IconCloud iconSlugs={icons} />
+          <IconCloud images={images}  />
         </div>
         <div
           ref={ballBRef}
           className="absolute"
           style={{ width: `${x}vw`, height: `${x}vw`, zIndex: 50 }}
         >
-          <IconCloud iconSlugs={icons} />
+          <IconCloud images={images}  />
         </div>
         <div
           ref={ballCRef}
           className="absolute"
           style={{ width: `${x}vw`, height: `${x}vw`, zIndex: 50 }}
         >
-          <IconCloud iconSlugs={icons} />
+          <IconCloud images={images}  />
         </div>
       </div>
     </div>
