@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 const GithubProfileCard = () => {
   const [githubProfileData, setGithubProfileData] = useState(null);
   useEffect(() => {
-    fetch(`https://api.github.com/users/pranav-iitr`)
+    fetch(`https://api.github.com/users/pranav-leo`)
       .then((res) => res.json())
       .then((data) => setGithubProfileData(data))
       .catch((error) =>

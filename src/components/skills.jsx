@@ -32,7 +32,7 @@ import { useEffect } from "react";
 
 function FSContainer({ title, icons }) {
 
-  
+
 
   return (
     <div className="flex flex-wrap justify-center h-full min-w-[100vw] items-center gap-2">
@@ -81,26 +81,26 @@ function FSContainer({ title, icons }) {
         </div>
       </div>
       <div className="flex w-[40vw]  h-full items-start  " >
-      <DisplayLottie
-        animationPath="/lottie/fullstack.json"
-        icons={["react", "nodejs", "mongodb", "postgresql"]}
-      />
+        <DisplayLottie
+          animationPath="/lottie/fullstack.json"
+          icons={["react", "nodejs", "mongodb", "postgresql"]}
+        />
       </div>
     </div>
   );
 }
-{/* */}
+{/* */ }
 
 function CloudeContainer({ title, icons }) {
 
-  
+
 
   return (
     <div className="flex flex-wrap justify-center h-full min-w-[100vw] items-center gap-2">
       <div className="flex w-[40vw] justify-center flex-col h-full gap-8 pt-24   ">
         <h4 className="text-white text-4xl -mt-32 mb-4">{title}</h4>
         <div className="w-[80%] flex flex-wrap justify-center flex-wrap gap-5 ">
-        <div className="flex justify-center items-center bg-transparent border-0.5 border-gray-00 rounded-full w-[4rem] h-[4rem] shadow-lg shadow-[#fbbc05]/60">
+          <div className="flex justify-center items-center bg-transparent border-0.5 border-gray-00 rounded-full w-[4rem] h-[4rem] shadow-lg shadow-[#fbbc05]/60">
             <LogosGoogleCloud className="w-8 h-8" />
           </div>
 
@@ -119,7 +119,7 @@ function CloudeContainer({ title, icons }) {
           </div>
           <div className="flex justify-center items-center bg-transparent border-0.5 border-gray-00 rounded-full w-[4rem] h-[4rem] shadow-lg shadow-[#fbbc05]/60">
             <LogosAwsEc2 className="w-8 h-8" />
-          </div> 
+          </div>
           <div className="flex justify-center items-center bg-transparent border-0.5 border-gray-00 rounded-full w-[4rem] h-[4rem] shadow-lg shadow-[#ffffff]/60">
             <LogosAws className="w-8 h-8" />
           </div>
@@ -137,10 +137,10 @@ function CloudeContainer({ title, icons }) {
         </div>
       </div>
       <div className="flex w-[40vw]  h-full items-start  " >
-      <DisplayLottie
-        animationPath="/lottie/cloude.json"
-        icons={["react", "nodejs", "mongodb", "postgresql"]}
-      />
+        <DisplayLottie
+          animationPath="/lottie/cloude.json"
+          icons={["react", "nodejs", "mongodb", "postgresql"]}
+        />
       </div>
     </div>
   );
@@ -156,7 +156,7 @@ function MLContainer({ title, icons }) {
           <div className="flex justify-center items-center bg-transparent border-0.5 border-gray-00 rounded-full w-[4rem] h-[4rem] shadow-lg shadow-[#fbbc05]/60 ">
             <LogosPyTorch className="w-8 h-8" />
           </div>
-       
+
           <div className="flex justify-center items-center bg-transparent border-0.5 border-gray-00 rounded-full w-[4rem] h-[4rem] shadow-lg shadow-[#ffffff]/60">
             <LogosTensorflow className="w-8 h-8" />
           </div>
@@ -182,10 +182,10 @@ function MLContainer({ title, icons }) {
         </div>
       </div>
       <div className="flex w-[40vw]  h-full items-start  " >
-      <DisplayLottie
-        animationPath="/lottie/coding.json"
-        icons={["react", "nodejs", "mongodb", "postgresql"]}
-      />
+        <DisplayLottie
+          animationPath="/lottie/coding.json"
+          icons={["react", "nodejs", "mongodb", "postgresql"]}
+        />
       </div>
     </div>
   );
@@ -198,12 +198,22 @@ export default function Skills() {
 
     const handleScroll = () => {
       stickySections.forEach((section) => {
-        const offsetTop = section.parentElement.offsetTop;
+        const rect = section.parentElement.getBoundingClientRect();
         const scrollSection = section.querySelector(".horizontal_scroll");
-        let percentage =
-          ((window.scrollY - offsetTop) / window.innerHeight) * 100;
-        percentage = percentage < 0 ? 0 : percentage > 200 ? 200 : percentage;
-        scrollSection.style.transform = `translate3d(${-percentage}vw, 0, 0)`;
+
+        // Calculate percentage based on how far the parent element has scrolled into view
+        // We start animating when the top of the parent hits the top of the viewport (rect.top <= 0)
+        // and end when the bottom of the parent hits the bottom of the viewport (or similar logic)
+
+        if (rect.top <= 0 && rect.bottom >= window.innerHeight) {
+          let percentage = Math.abs(rect.top) / (rect.height - window.innerHeight) * 200;
+          percentage = Math.max(0, Math.min(percentage, 200));
+          scrollSection.style.transform = `translate3d(${-percentage}vw, 0, 0)`;
+        } else if (rect.top > 0) {
+          scrollSection.style.transform = `translate3d(0, 0, 0)`;
+        } else if (rect.bottom < window.innerHeight) {
+          scrollSection.style.transform = `translate3d(-200vw, 0, 0)`;
+        }
       });
     };
 
@@ -215,8 +225,8 @@ export default function Skills() {
     <main className="w-full" >
       {/* First Section */}
       <section className=" flex items-center justify-center">
-      <h3 className=" text-white text-semibold text-5xl ">
-       
+        <h3 className=" text-white text-semibold text-5xl ">
+
           what do I do ?
         </h3>
       </section>
@@ -237,21 +247,21 @@ export default function Skills() {
             </div>
             <div className="scroll_contents h-[100vh]  w-screen">
               <CloudeContainer title="Cloud Engineering" />
-              
+
             </div>
             <div className="scroll_contents h-[100vh]  w-screen">
               <MLContainer title="AI/ML Engineering" />
-              
+
             </div>
-          
-            
+
+
           </div>
         </div>
       </div>
 
       {/* Final Section */}
       <section className=" flex items-center justify-center">
-       
+
       </section>
     </main>
   );

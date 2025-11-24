@@ -90,7 +90,7 @@ const Voulnteer = () => {
   return (
     <div className="w-full px-[10vw] flex mt-32 gap-16 flex-col items-center" >  
     
-    <div className="text-5xl w-full text-center text-white" > Voulnteer </div>
+    {/* <div className="text-5xl w-full text-center text-white" > Voulnteer </div> */}
       <BentoGrid className="lg:grid-rows-4 lg:grid-cols-3 gap-6">
       {features.map((feature) => (
         <BentoCard key={feature.name} {...feature} />
